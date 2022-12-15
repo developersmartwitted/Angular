@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-body">
+    <h2>Top Tabs Component</h2>
+    <ul ngbNav #nav="ngbNav" [destroyOnHide]="false" [(activeId)]="activeTab" class="nav-tabs mt-4">
+      <li [ngbNavItem]="1">
+        <a ngbNavLink>Tab 1</a>
+        <ng-template ngbNavContent> This is the content of Tab 1 </ng-template>
+      </li>
+      <li [ngbNavItem]="2">
+        <a ngbNavLink>Tab 2</a>
+        <ng-template ngbNavContent> This is the content of Tab 2 </ng-template>
+      </li>
+    </ul>
+    <div [ngbNavOutlet]="nav" class="mt-4 pt-3"></div>
+  </div>
+</div>
+
+<div class="dash-head pt-4">
+  <div class="d-flex content justify-content-center">
+    <div class="illustration col-4"></div>
+
+    <div class="d-flex flex-column col-8">
+      <h2 class="text-center m-4">Take some of those closing to-do’s off your list and put them on ours.</h2>
+      <p class="text-center mb-4 subtext">Cras purus velit, suscipit et consequat a, dapibus ut diam.</p>
+      <div class="d-flex justify-content-center ">
+        <button class="btn btn-warning btn-animate mr-3" [routerLink]="['/orders/new']">
+          <i class="icon icon-plus text-info mr-2 h5" alt="Information Icon"></i>
+          <span>
+            Create new order
+          </span>
+        </button>
+
+        <button class="btn btn-sm btn-outline-info btn-animate">
+          <i class="icon icon-plus text-info mr-2 h5"></i>
+          <span>Add to existing order</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

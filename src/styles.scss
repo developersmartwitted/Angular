@@ -1,0 +1,25 @@
+@use "sass:meta";
+@include meta.load-css("../projects/plx-inputs/src/lib/styles/styles.scss");
+
+// TODO: check with Laren to see if we can standardize the inputs
+input[type="text"]:required:not(input[type="text"]:disabled),
+input[type="email"]:required:not(input[type="email"]:disabled),
+input[type="url"]:required:not(input[type="url"]:disabled),
+input[type="search"]:required:not(input[type="search"]:disabled),
+p-chips[required]:not(p-chips[disabled]),
+p-calendar[required]:not(p-calendar[disabled]),
+p-inputnumber[required]:not(p-inputnumber[disabled]),
+p-inputmask[required]:not(p-inputmask[disabled]),
+p-dropdown[required]:not(p-dropdown[disabled]),
+p-multiselect[required]:not(p-multiselect[disabled]),
+// p-checkbox[required]:not(p-checkbox[disabled]),
+p-inputswitch[required]:not(p-inputswitch[disabled]),
+textarea[required] {
+  & + label::after {
+    content: " *";
+    color: var(--danger);
+    font-size: 1.2rem;
+    font-weight: bold;
+    vertical-align: top;
+  }
+}

@@ -1,0 +1,23 @@
+<div [ngSwitch]="status">
+  <div *ngSwitchCase="'Placed'">
+    <p class="status bg-info">{{ status | prettyCamelCase }}</p>
+  </div>
+  <div *ngSwitchCase="'InProgress'">
+    <p class="status bg-primary">{{ status | prettyCamelCase }}</p>
+  </div>
+  <div *ngSwitchCase="'OnHold'">
+    <p class="status bg-warning">{{ status | prettyCamelCase }}</p>
+  </div>
+  <div *ngSwitchCase="'Completed'">
+    <p class="status bg-primary">{{ status | prettyCamelCase }}</p>
+  </div>
+  <div *ngSwitchCase="'Cancelled'">
+    <p class="status bg-danger">{{ status | prettyCamelCase }}</p>
+  </div>
+  <div *ngSwitchCase="'Archived'">
+    <p class="status bg-dark">{{ status | prettyCamelCase }}</p>
+  </div>
+  <div *ngSwitchDefault>
+    <p class="status bg-primary">{{ status | prettyCamelCase }}</p>
+  </div>
+</div>

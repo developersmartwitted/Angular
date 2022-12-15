@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15.944" viewBox="0 0 16 15.944">
+  <defs>
+    <style>
+      .a,
+      .b {
+        fill: none;
+        stroke: #7f9da5;
+        stroke-linejoin: round;
+      }
+
+      .a {
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  <path class="a" d="M15.087,9.857,10,14.944l-2.5.5.5-2.5,5.087-5.087a1.411,1.411,0,0,1,1.995,0l.005.005a1.409,1.409,0,0,1,0,1.995Z" />
+  <path class="a" d="M6,11.5H1.5a1,1,0,0,1-1-1V2.51a1,1,0,0,1,1-1h9a1,1,0,0,1,1,1V5.5" />
+  <path class="b" d="M.5,4.5h11" />
+  <path class="a" d="M3.5,2.5V.5" />
+  <path class="a" d="M8.5,2.5V.5" />
+</svg>

@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class="mt-2 mb-5">Dynamic Forms</h2>
+    <form [formGroup]="form">
+      <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+      <button type="submit" [disabled]="form.invalid" class="btn btn-primary submit-button">Submit</button>
+    </form>
+  </div>
+</div>
+<h1>The model</h1>
+<pre>{{ model | json }}</pre>

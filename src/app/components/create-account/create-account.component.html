@@ -1,0 +1,341 @@
+<div id="lock-container-1" class="lock-container">
+  <div class="py-5 d-flex justify-content-center align-items-center">
+    <div>
+      <div class="lock-form">
+        <div class="d-flex justify-content-between align-items-center">
+          <img src="../../../assets/svg/proplogix-horizontal-logo.svg" alt="Proplogix Logo" />
+          <h2 class="mb-0">Account Creation</h2>
+        </div>
+        <p class="mt-4">
+          Create an account to create and review orders, pay invoices, and receive the support you need. All fields are
+          required unless noted. For questions regarding existing accounts,
+          <a class="link-animation">please visit this FAQ</a>.
+        </p>
+        <div *ngIf="wizardPage === 1">
+          <h2 class="mt-5">Step 1: Let’s begin with you.</h2>
+          <form (ngSubmit)="wizardPage = 2" #customerInfo="ngForm">
+            <div class="p-field">
+              <span class="p-float-label">
+                <input
+                  [required]="true"
+                  type="text"
+                  id="firstName"
+                  pInputText
+                  #firstName="ngModel"
+                  [(ngModel)]="customer.firstName"
+                  name="firstName"
+                  [attr.data-test]="'firstName'"
+                />
+                <label for="firstName">First Name</label>
+              </span>
+              <div class="alert alert-danger" *ngIf="firstName.invalid && firstName.touched">
+                First Name is invalid.
+              </div>
+            </div>
+            <div class="p-field">
+              <span class="p-float-label">
+                <input
+                  [required]="true"
+                  type="text"
+                  id="lastName"
+                  pInputText
+                  #lastName="ngModel"
+                  [(ngModel)]="customer.lastName"
+                  name="lastName"
+                  [attr.data-test]="'lastName'"
+                />
+                <label for="lastName">Last Name </label>
+              </span>
+              <div class="alert alert-danger" *ngIf="lastName.invalid && lastName.touched">Last Name is invalid.</div>
+            </div>
+            <div class="p-field">
+              <span class="p-float-label">
+                <p-inputMask
+                  mask="(999) 999-9999? x 99999"
+                  [unmask]="true"
+                  required
+                  [(ngModel)]="customer.contactPhoneNumber"
+                  name="contactPhoneNumber"
+                  [attr.data-test]="'contactPhoneNumber'"
+                  #contactPhoneNumber="ngModel"
+                ></p-inputMask>
+                <label for="contactPhoneNumber">Phone Number </label>
+              </span>
+              <div class="alert alert-danger" *ngIf="contactPhoneNumber.invalid && contactPhoneNumber.touched">
+                A Phone Number must be in (_ _ _) _ _ _ - _ _ _ _ format
+              </div>
+            </div>
+            <hr />
+            <h2>Shipping Address</h2>
+            <mos-address-form
+              [(address)]="customer.shippingAddress"
+              [displayCounty]="true"
+              [compactDisplay]="true"
+              [displayAddressSearch]="true"
+              (addressChange)="setBillingEqualToShipping($event)"
+            >
+            </mos-address-form>
+            <hr />
+            <h2>Billing Address</h2>
+            <div class="p-field">
+              <p-checkbox
+                inputId="checkboxForSameAddress"
+                name="checkboxForSameAddress"
+                [attr.data-test]="'checkboxForSameAddress'"
+                [binary]="true"
+                (ngModelChange)="billingAddressHandler($event)"
+                [(ngModel)]="checkboxForSameAddress"
+              ></p-checkbox>
+              <label for="checkboxForSameAddress">Same as shipping?</label>
+            </div>
+            <div *ngIf="!checkboxForSameAddress">
+              <mos-address-form
+                [(address)]="customer.billingAddress"
+                [displayCounty]="true"
+                [compactDisplay]="true"
+                [displayAddressSearch]="true"
+              >
+              </mos-address-form>
+            </div>
+            <hr />
+            <button
+              data-test="next-step-button"
+              class="btn btn-info mr-3"
+              [disabled]="customerInfo.invalid"
+              (click)="scrollToTopOfPage()"
+            >
+              Next Step
+            </button>
+          </form>
+          <div class="d-flex justify-content-center align-items-center mt-5">
+            <div class="cursor-pointer" (click)="wizardPage = 1">
+              <span class="rounded-circle d-inline-block progress-circle mr-2 bg-primary"></span>
+            </div>
+            <div>
+              <span
+                class="rounded-circle d-inline-block progress-circle ml-1"
+                [ngClass]="{ 'bg-primary': wizardPage === 2 }"
+              ></span>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="wizardPage === 2">
+          <h2 class="mt-3">Step 2: Your Company Details</h2>
+          <form #businessInfo="ngForm" (submit)="submitAccountCreateForm()">
+            <div class="p-field">
+              <span class="p-float-label">
+                <input
+                  [required]="true"
+                  type="text"
+                  id="name"
+                  pInputText
+                  #name="ngModel"
+                  [attr.data-test]="'ngModel'"
+                  [(ngModel)]="customer.name"
+                  name="name"
+                  [attr.data-test]="'name'"
+                />
+                <label for="name">Company Name </label>
+              </span>
+              <div class="alert alert-danger" *ngIf="name.invalid && name.touched">Company Name is invalid.</div>
+            </div>
+            <div class="p-field">
+              <span class="p-float-label">
+                <input
+                  [required]="true"
+                  type="text"
+                  id="branch"
+                  pInputText
+                  #branch="ngModel"
+                  [(ngModel)]="customer.branch"
+                  name="branch"
+                  [attr.data-test]="'branch'"
+                />
+                <label for="branch">Company branch </label>
+              </span>
+              <div class="alert alert-danger" *ngIf="branch.invalid && branch.touched">Company branch is invalid.</div>
+            </div>
+            <div class="p-field">
+              <span class="p-float-label">
+                <input
+                  [required]="true"
+                  type="text"
+                  id="fein"
+                  pInputText
+                  #fein="ngModel"
+                  [(ngModel)]="customer.fein"
+                  name="fein"
+                  [attr.data-test]="'fein'"
+                  minlength="1"
+                  maxlength="10"
+                />
+                <label for="fein">FEIN</label>
+              </span>
+              <div class="alert alert-danger" *ngIf="fein.invalid && fein.touched">Fein is invalid.</div>
+            </div>
+            <div class="p-field">
+              <span class="p-float-label">
+                <input
+                  [required]="true"
+                  type="email"
+                  id="email"
+                  pInputText
+                  email
+                  #email="ngModel"
+                  [(ngModel)]="customer.emailAddress"
+                  name="email"
+                  [attr.data-test]="'email'"
+                  pattern="^\S+@\S+\.\S+$"
+                />
+                <label for="email">Email Address</label>
+              </span>
+              <div class="alert alert-danger" *ngIf="email.invalid && email.touched">Email Address is invalid.</div>
+            </div>
+            <div class="p-field">
+              <span class="p-float-label">
+                <p-inputMask
+                  mask="(999) 999-9999? x 99999"
+                  [unmask]="true"
+                  required
+                  [(ngModel)]="customer.phoneNumber"
+                  name="phoneNumber"
+                  [attr.data-test]="'phoneNumber'"
+                  #phoneNumber="ngModel"
+                ></p-inputMask>
+                <label for="phoneNumber">Company Phone Number </label>
+              </span>
+              <div class="alert alert-danger" *ngIf="phoneNumber.invalid && phoneNumber.touched">
+                A Phone Number must be in (_ _ _) _ _ _ - _ _ _ _ format
+              </div>
+            </div>
+            <div class="p-field">
+              <span class="p-float-label">
+                <p-inputMask
+                  mask="(999) 999-9999? x 99999"
+                  [unmask]="true"
+                  [(ngModel)]="customer.faxNumber"
+                  name="faxNumber"
+                  [attr.data-test]="'faxNumber'"
+                  #faxNumber="ngModel"
+                ></p-inputMask>
+                <label for="faxNumber">Company Fax Number<ng-container> (Optional)</ng-container></label>
+              </span>
+              <div class="alert alert-danger" *ngIf="faxNumber.invalid && faxNumber.touched">
+                A Fax Number must be in (_ _ _) _ _ _ - _ _ _ _ format
+              </div>
+            </div>
+            <hr />
+            <h2>Great! Almost there. How did you hear about us?</h2>
+            <div class="p-field">
+              <span class="p-float-label">
+                <p-dropdown
+                  inputId="leadSourceId"
+                  [required]="true"
+                  [autoDisplayFirst]="false"
+                  [options]="leadSources"
+                  [(ngModel)]="customer && customer.leadSourceId"
+                  #leadSourceId="ngModel"
+                  name="leadSourceId"
+                  [attr.data-test]="'leadSourceId'"
+                  optionLabel="name"
+                  optionValue="id"
+                ></p-dropdown>
+                <label for="leadSourceId">How Did You Hear About Us? </label>
+              </span>
+            </div>
+            <div *ngIf="customer.leadSourceId === -3" class="p-field">
+              <span class="p-float-label">
+                <input
+                  [required]="true"
+                  type="text"
+                  id="pleaseSpecify"
+                  pInputText
+                  #pleaseSpecify="ngModel"
+                  [(ngModel)]="customer.leadSourceDetails"
+                  name="pleaseSpecify"
+                  [attr.data-test]="'pleaseSpecify'"
+                />
+                <label for="pleaseSpecify">Please Specify</label>
+              </span>
+              <div class="alert alert-danger" *ngIf="pleaseSpecify.invalid && pleaseSpecify.touched">
+                Please Specify is invalid.
+              </div>
+            </div>
+            <p class="mt-5 mb-3">Please check box below to proceed.</p>
+            <ngx-recaptcha2
+              #captchaElem
+              [siteKey]="siteKey"
+              (reset)="resetCaptcha()"
+              (expire)="resetCaptcha()"
+              (success)="setCaptchaValue($event)"
+              [hl]="'en'"
+              [theme]="'light'"
+              [type]="'image'"
+              size="normal"
+              [(ngModel)]="recaptcha"
+              required
+              name="recaptcha"
+              [attr.data-test]="'recaptcha'"
+              class="mb-4"
+            >
+            </ngx-recaptcha2>
+            <div class="d-flex justify-content-start align-items-center mt-3">
+              <div class="p-field">
+                <p-checkbox
+                  inputId="termsAgreement"
+                  name="termsAgreement"
+                  [attr.data-test]="'termsAgreement'"
+                  [binary]="true"
+                  (ngModelChange)="changeTermsAgreement($event)"
+                  [(ngModel)]="termsAgreement"
+                ></p-checkbox>
+                <div class="position-relative terms">
+                  <label for="termsAgreement" class="text-secondary terms-text">
+                    I agree to the PropLogix
+                    <a
+                      class="link-animation"
+                      target="_blank"
+                      href="https://proplogix-legal-documents.s3.amazonaws.com/Terms+%26+Conditions+-+PropLogix.pdf"
+                    >
+                      Terms of Service</a
+                    >
+                    and
+                    <a
+                      class="link-animation"
+                      target="_blank"
+                      href="https://proplogix-legal-documents.s3.amazonaws.com/Privacy+Policy+-+PropLogix.pdf"
+                      >Privacy Policy</a
+                    >
+                  </label>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <button
+              type="submit"
+              data-test="submit-button"
+              [disabled]="
+                businessInfo?.invalid || customerInfo?.invalid || !termsAgreement || disableButtonWhileSubmitting
+              "
+              class="btn mr-3 btn-info"
+            >
+              Create Account
+            </button>
+            <button class="btn btn-outline-info" (click)="wizardPage = 1">Previous Step</button>
+          </form>
+          <div class="d-flex justify-content-center align-items-center mt-5">
+            <div class="cursor-pointer" (click)="wizardPage = 1">
+              <span class="rounded-circle d-inline-block progress-circle mr-2 bg-primary"></span>
+            </div>
+            <div>
+              <span
+                class="rounded-circle d-inline-block progress-circle ml-1"
+                [ngClass]="{ 'bg-primary': wizardPage === 2 }"
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+# This is a sample build configuration for JavaScript.
+# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+
+image: proplogix/node-build:v0.6.1
+
+options:
+  docker: true
+
+pipelines:
+  default:
+    - step:
+        script:
+          - echo $BITBUCKET_BRANCH
+  branches:
+    develop:
+      - step:
+          name: Install, Build, Test
+          script:
+            - npm install
+            - npm build
+            - npm test
+    master:
+      - step:
+          name: Install, Build, Test, NPM Publish
+          script:
+            - npm install -g npm@7.15.0
+            - npm install
+            - npm run release
+            - echo //nexus.pls-dev.com/repository/npm-proplogix/:_authToken=${NPM_TOKEN} > ~/.npmrc
+            - npm run-script build
+            - npm publish ./dist/plx-inputs
+

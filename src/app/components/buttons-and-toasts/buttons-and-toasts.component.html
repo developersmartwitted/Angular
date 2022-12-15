@@ -1,0 +1,65 @@
+<div class="card mw-100">
+  <div class="card-body">
+    <h2>Edit and Delete Components</h2>
+    <plx-edit class="mr-5"></plx-edit>
+    <plx-delete></plx-delete>
+    <hr />
+    <h2>Readonly Label and Value</h2>
+    <div class="row">
+      <plx-readonly-value class="col-lg-12" [label]="'Project Name'" [value]="'Plx-Angular'"></plx-readonly-value>
+      <plx-readonly-value class="col-lg-12" [label]="'Company Name'" [value]="'Proplogix'"></plx-readonly-value>
+      <plx-readonly-value
+        class="col-lg-12"
+        [label]="'Country'"
+        [value]="'2019-04-19T09:42:23.0682609+04:00' | date: 'shortDate'"
+      ></plx-readonly-value>
+    </div>
+    <hr />
+    <h2>Buttons</h2>
+    <hr />
+    <h6>Small Buttons</h6>
+    <button class="btn-primary btn mr-2 btn-sm">Success Button</button>
+    <button class="btn-info btn mr-2 btn-sm">Info Button</button>
+    <button class="btn-warning btn mr-2 btn-sm">Warning Button</button>
+    <button class="btn-danger btn mr-2 btn-sm">Error Button</button>
+    <hr />
+    <h6>Normal Buttons</h6>
+    <button class="btn-primary btn mr-2">Success Button</button> <button class="btn-info btn mr-2">Info Button</button>
+    <button class="btn-warning btn mr-2">Warning Button</button>
+    <button class="btn-danger btn mr-2">Error Button</button>
+    <hr />
+    <h6>Large Buttons</h6>
+    <button class="btn-primary btn mr-2 btn-lg">Success Button</button>
+    <button class="btn-info btn mr-2 btn-lg">Info Button</button>
+    <button class="btn-warning btn mr-2 btn-lg">Warning Button</button>
+    <button class="btn-danger btn mr-2 btn-lg">Error Button</button>
+    <hr />
+    <h2 class="mt-4">Disabled Buttons with Spinners</h2>
+    <button [disabled]="true" class="btn-primary btn mr-2">
+      <div class="spinner-border spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div>
+      Success Button
+    </button>
+    <button [disabled]="true" class="btn-info btn mr-2">
+      <div class="spinner-border spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div>
+      Info Button
+    </button>
+    <button [disabled]="true" class="btn-warning btn mr-2">
+      <div class="spinner-border spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div>
+      Warning Button
+    </button>
+    <button [disabled]="true" class="btn-danger btn mr-2">
+      <div class="spinner-border spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div>
+      Error Button
+    </button>
+    <h2 class="mt-4">Outlined Buttons</h2>
+    <button class="btn mr-2 btn-outline-success">Success</button>
+    <button class="btn mr-2 btn-outline-info">Info</button>
+    <button class="btn mr-2 btn-outline-warning">Warning</button>
+    <button class="btn mr-2 btn-outline-danger">Danger</button>
+    <h2 class="mt-4">Toasts</h2>
+    <button (click)="toastSuccess()" class="btn-primary btn mr-2">Success Toast</button>
+    <button (click)="toastInfo()" class="btn-info btn mr-2">Info Toast</button>
+    <button (click)="toastWarning()" class="btn-warning btn mr-2">Warning Toast</button>
+    <button (click)="toastError()" class="btn-danger btn mr-2">Error Toast</button>
+  </div>
+</div>

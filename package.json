@@ -1,0 +1,137 @@
+{
+  "name": "plx-input-library",
+  "version": "13.1.2",
+  "license": "UNLICENSED",
+  "description": "A collection of Angular Inputs that are designed to work with both Template Driven and Reactive Forms. The intent is to be generic in their use and modular to make editing easier.",
+  "scripts": {
+    "iconbuild": "npm install -g fantasticon && fantasticon --config ./.fantasticonrc.js --normalize true --descent 45",
+    "prebuild": "prettier --loglevel silent --write \"src/**/*.ts\"",
+    "build": "ng build PlxInputs  && cp -r ./projects/plx-inputs/src/lib/styles ./dist/plx-inputs",
+    "start": "ng serve --port 55000 -o",
+    "test": "ng test PlxInputs --watch=false --browsers=ChromeHeadless",
+    "release": "semantic-release --tag-format '${version}'",
+    "preanalyze": "ng build --stats-json ",
+    "analyze": "webpack-bundle-analyzer dist/plx-input-library/stats.json"
+  },
+  "private": false,
+  "dependencies": {
+    "@angular/animations": "^13.3.9",
+    "@angular/cdk": "^13.3.7",
+    "@angular/common": "^13.3.9",
+    "@angular/compiler": "^13.3.9",
+    "@angular/core": "^13.3.9",
+    "@angular/forms": "^13.3.9",
+    "@angular/platform-browser": "^13.3.9",
+    "@angular/platform-browser-dynamic": "^13.3.9",
+    "@angular/router": "^13.3.9",
+    "@ng-bootstrap/ng-bootstrap": "^11.0.0",
+    "@ng-select/ng-select": "^8.1.1",
+    "@ngx-formly/bootstrap": "^5.12.1",
+    "@ngx-formly/core": "^5.12.1",
+    "angular2-text-mask": "^9.0.0",
+    "bootstrap": "^4.6.0",
+    "ngx-dropzone": "^3.1.0",
+    "primeicons": "^5.0.0",
+    "primeng": "^13.4.0",
+    "rxjs": "^7.5.5",
+    "tslib": "^2.4.0",
+    "zone.js": "~0.11.5"
+  },
+  "devDependencies": {
+    "@angular-devkit/architect": "^0.1303.6",
+    "@angular-devkit/build-angular": "^13.3.6",
+    "@angular-devkit/core": "^13.3.6",
+    "@angular-devkit/schematics": "^13.3.6",
+    "@angular-eslint/builder": "13.2.1",
+    "@angular-eslint/eslint-plugin": "13.2.1",
+    "@angular-eslint/eslint-plugin-template": "13.2.1",
+    "@angular-eslint/schematics": "13.2.1",
+    "@angular-eslint/template-parser": "13.2.1",
+    "@angular/cli": "^13.3.6",
+    "@angular/compiler-cli": "^13.3.9",
+    "@angular/language-service": "^13.3.9",
+    "@angular/localize": "^13.3.9",
+    "@ngx-formly/schematics": "^5.12.1",
+    "@schematics/angular": "^13.3.6",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^9.0.1",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "@types/jasmine": "^4.0.3",
+    "@types/jasminewd2": "^2.0.10",
+    "@types/node": "^17.0.35",
+    "@typescript-eslint/eslint-plugin": "5.25.0",
+    "@typescript-eslint/parser": "5.25.0",
+    "eslint": "^8.15.0",
+    "eslint-plugin-compat": "^4.0.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsdoc": "^39.3.0",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "husky": "^8.0.1",
+    "jasmine": "4.1.0",
+    "jasmine-core": "4.1.1",
+    "jasmine-spec-reporter": "^7.0.0",
+    "lint-staged": "^12.4.1",
+    "miragejs": "^0.1.44",
+    "ng-mocks": "^13.5.2",
+    "prettier": "^2.6.2",
+    "protractor": "^7.0.0",
+    "ng-packagr": "^13.3.1",
+    "semantic-release": "^19.0.2",
+    "standard-version": "^9.5.0",
+    "ts-node": "~10.7.0",
+    "tsickle": "^0.46.0",
+    "typescript": "4.6.4",
+    "webpack-bundle-analyzer": "^4.5.0"
+  },
+  "release": {
+    "branch": [
+      "master"
+    ],
+    "private": true,
+    "branches": [
+      {
+        "name": "master",
+        "prerelease": false
+      }
+    ],
+    "dryRun": false,
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "projects/plx-inputs/package.json",
+            "package.json",
+            "package-lock.json"
+          ],
+          "message": "chore(release): [skip ci] ${nextRelease.version}"
+        }
+      ],
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "cd projects/plx-inputs && npm version ${nextRelease.version} && cd ../.."
+        }
+      ]
+    ],
+    "repositoryUrl": "https://proplogix@dev.azure.com/proplogix/architecture/_git/angular"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

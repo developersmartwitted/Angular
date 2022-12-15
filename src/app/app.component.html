@@ -1,0 +1,34 @@
+<plx-header>
+  <div class="d-flex justify-content-between align-items-center h-100">
+    <div class="ml-3 branding d-block">
+      <a tabindex="0"> <div class="company-logo"></div> </a>
+    </div>
+    <h2 class="mr-3 ml-3 text-white">Plx Angular</h2>
+    <div class="d-flex align-items-center justify-content-between">
+      <h3 class="mr-3 ml-3 text-white" for="darkMode">Dark Mode</h3>
+      <p-inputSwitch
+        #toggle="ngModel"
+        inputId="darkMode"
+        [(ngModel)]="darkMode"
+        (ngModelChange)="toggleTheme($event)"
+      ></p-inputSwitch>
+    </div>
+  </div>
+</plx-header>
+<div class="d-flex calculated-height">
+  <plx-side-menu [sideMenuItems]="sideMenuItems" class="d-none d-xs-none d-sm-block"> </plx-side-menu>
+  <section class="app-content container-fluid p-0" role="main">
+    <div class="internal-content"><router-outlet></router-outlet></div>
+  </section>
+</div>
+<plx-toast aria-live="polite" aria-atomic="true"></plx-toast>
+
+<ng-template #abc let-item="item" let-navigate="navigate" let-toggleMenu="toggleMenu" let-collapsedMenu="collapsedMenu">
+  <div class="d-flex justify-content-center align-items-center my-3">
+    <p *ngIf="!collapsedMenu">Custom Menu Item</p>
+  </div>
+</ng-template>
+
+<ng-template #lineBreak>
+  <hr />
+</ng-template>

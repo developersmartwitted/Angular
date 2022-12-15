@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <g id="streamline-icon-notes-checklist-flip_46x46" data-name="streamline-icon-notes-checklist-flip@46x46" transform="translate(-0.438 -0.437)">
+    <path id="Path_3608" data-name="Path 3608" d="M1.438,3.313h34a1,1,0,0,1,1,1V35.438a1,1,0,0,1-1,1h-34a1,1,0,0,1-1-1V4.313A1,1,0,0,1,1.438,3.313Zm33,2h-32V34.438h32Z" fill="#41b780"/>
+    <path id="Path_3609" data-name="Path 3609" d="M10.063,8.188a1,1,0,0,1-1-1V1.437a1,1,0,0,1,2,0v5.75A1,1,0,0,1,10.063,8.188Z" transform="translate(-1.825)" fill="#41b780"/>
+    <path id="Path_3610" data-name="Path 3610" d="M35.938,8.188a1,1,0,0,1-1-1V1.437a1,1,0,0,1,2,0v5.75A1,1,0,0,1,35.938,8.188Z" transform="translate(-9.125)" fill="#41b780"/>
+    <path id="Path_3611" data-name="Path 3611" d="M33.063,35.5H24.438a1,1,0,0,1,0-2h8.625a1,1,0,0,1,0,2Z" transform="translate(-6.083 -6.996)" fill="#41b780"/>
+    <path id="Path_3612" data-name="Path 3612" d="M33.063,21.125H24.438a1,1,0,0,1,0-2h8.625a1,1,0,0,1,0,2Z" transform="translate(-6.083 -3.954)" fill="#41b780"/>
+    <path id="Path_3613" data-name="Path 3613" d="M12.937,38.375a1,1,0,0,1-.707-.293L7.918,33.77a1,1,0,0,1,1.414-1.414l3.5,3.5,5.346-7.128a1,1,0,0,1,1.6,1.2l-6.038,8.05a1,1,0,0,1-.729.4Z" transform="translate(-2.001 -7.255)" fill="#41b780"/>
+    <path id="Path_3614" data-name="Path 3614" d="M12.937,23.425a1,1,0,0,1-.707-.293L7.918,18.82a1,1,0,0,1,1.414-1.414l3.5,3.5,5.346-7.128a1,1,0,1,1,1.6,1.2l-6.038,8.05a1,1,0,0,1-.729.4Z" transform="translate(-2.001 -3.366)" fill="#41b780"/>
+  </g>
+</svg>

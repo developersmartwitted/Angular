@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-body">
+    <h2>Accordion Component</h2>
+    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+      <ngb-panel title="Pane 1">
+        <ng-template ngbPanelContent>
+          <p>Pane 1</p>
+          <hr />
+          <p>This is not pane 2</p>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel title="Pane 2"> <ng-template ngbPanelContent>Pane 2</ng-template> </ngb-panel>
+      <ngb-panel title="Disabled" [disabled]="true">
+        <ng-template ngbPanelContent>Nothing here.</ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+</div>

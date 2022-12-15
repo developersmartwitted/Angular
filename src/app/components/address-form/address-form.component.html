@@ -1,0 +1,151 @@
+<div *ngIf="canShowReadOnly">
+  <p class="readonly-value">
+    {{ address.line1 }} {{ address.line2 || '' }} {{ address.city + ',' || '' }}
+    {{ address?.state?.name || getStateName(address.stateId) || '' }} {{ address.postalCode || '' }}
+  </p>
+</div>
+
+<fieldset *ngIf="!readonly" [ngModelGroup]="'address' + randomId">
+  <div>
+    <div>
+      <div class="gmaps-autocomplete position-relative" *ngIf="displayAddressSearch && singleLineAddress">
+        <label id="address-form-google-search-label"
+          [ngClass]="{ 'has-value': searchTerm?.length || isFocused, 'input-focused-then-float-label': isFocused }"
+          class="d-block required"
+          for="{{ 'addressSearch' + randomId }}"
+          >{{ customGoogleSearchLabel || 'Address' }}</label
+        >
+        <input id="dummy-input" class="hide-component" />
+        <input
+          id="address-form-google-search"
+          [(ngModel)]="searchTerm"
+          name="searchTerm"
+          class="google-adddress-search"
+          type="search"
+          (focus)="isFocused = true"
+          (blur)="isFocused = false"
+          ngx-google-places-autocomplete
+          [options]="options"
+          #addressSearch
+          #placesRef="ngx-places"
+          (onAddressChange)="handleAddressChange($event)"
+          (ngModelChange)="handleSearchChange($event)"
+        />
+      </div>
+      <div *ngIf="singleLineAddress">
+        <a class="link-animation" (click)="toggleSingleLine(false)">Switch to individual address lines</a>
+      </div>
+      <div [ngClass]="{ 'd-none': singleLineAddress }">
+        <div class="p-field">
+          <span class="p-float-label">
+            <input
+              [required]="true"
+              type="text"
+              id="line1"
+              pInputText
+              #line1="ngModel"
+              name="line1"
+              [(ngModel)]="address && address.line1"
+              (ngModelChange)="addressChange.emit(address)"
+            />
+            <label for="line1">Address (Line 1)</label>
+          </span>
+          <div class="alert alert-danger" *ngIf="line1.invalid && line1.touched">Address (Line 1) is invalid</div>
+        </div>
+        <div class="p-field">
+          <span class="p-float-label">
+            <input
+              type="text"
+              id="line2"
+              pInputText
+              #line2="ngModel"
+              name="line2"
+              [(ngModel)]="address && address.line2"
+              (ngModelChange)="addressChange.emit(address)"
+            />
+            <label for="line2">Address (Line 2)<ng-container>(Optional)</ng-container></label>
+          </span>
+          <div class="alert alert-danger" *ngIf="line2.invalid && line2.touched">Address (Line 2) is invalid</div>
+        </div>
+        <div class="p-field">
+          <span class="p-float-label">
+            <input
+              [required]="true"
+              type="text"
+              id="city"
+              pInputText
+              #city="ngModel"
+              name="city"
+              [(ngModel)]="address && address.city"
+              (ngModelChange)="addressChange.emit(address)"
+            />
+            <label for="city">City </label>
+          </span>
+          <div class="alert alert-danger" *ngIf="city.invalid && city.touched">City is invalid</div>
+        </div>
+
+        <div class="input-width d-flex">
+          <div class="p-field col-6 pl-0 pr-2">
+            <span class="p-float-label">
+              <p-dropdown
+                inputId="stateDropdown"
+                [required]="true"
+                [autoDisplayFirst]="false"
+                [options]="states"
+                [(ngModel)]="address.stateId"
+                #state="ngModel"
+                name="state"
+                (ngModelChange)="setState(address.stateId)"
+                optionLabel="name"
+                optionValue="id"
+              ></p-dropdown>
+              <label for="state" [ngClass]="{ 'p-inputwrapper-filled-label': address.stateId > -1 }">State </label>
+            </span>
+            <div class="alert alert-danger" *ngIf="state.invalid && state.touched">State is invalid</div>
+          </div>
+          <div class="p-field col-6 pl-2 pr-0">
+            <span class="p-float-label">
+              <input
+                [required]="true"
+                type="text"
+                id="postalCode"
+                pInputText
+                #postalCode="ngModel"
+                name="postalCode"
+                minlength="5"
+                maxlength="10"
+                [(ngModel)]="address && address.postalCode"
+                (ngModelChange)="addressChange.emit(address)"
+              />
+              <label for="postalCode">Zip Code</label>
+            </span>
+            <div class="alert alert-danger" *ngIf="postalCode.invalid && postalCode.touched">
+              A Zip Code must be a value of at least 5 characters and no more than 9 characters.
+            </div>
+          </div>
+        </div>
+        <div *ngIf="displayCounty" class="p-field p-col-12">
+          <span class="p-float-label">
+            <p-dropdown
+              inputId="countyDropdown"
+              [required]="isCountyRequired"
+              [autoDisplayFirst]="false"
+              [options]="counties"
+              [(ngModel)]="address.countyId"
+              (ngModelChange)="setCounty(address.countyId)"
+              #county="ngModel"
+              name="county"
+              optionLabel="name"
+              optionValue="id"
+            ></p-dropdown>
+            <label for="county">County <ng-container *ngIf="!isCountyRequired">(Optional)</ng-container></label>
+          </span>
+          <div class="alert alert-danger" *ngIf="county.invalid && county.touched">County is invalid</div>
+        </div>
+      </div>
+      <div *ngIf="!singleLineAddress">
+        <a class="link-animation" (click)="toggleSingleLine(true)">Switch to single line address look-up</a>
+      </div>
+    </div>
+  </div>
+</fieldset>

@@ -1,0 +1,172 @@
+<div class="card">
+  <div class="card-body">
+    <h2>Input Examples</h2>
+    <form #plxInputs="ngForm">
+      <div class="row">
+        <!-- <plx-input-file></plx-input-file> -->
+        <plx-input-checkbox
+          class="col-12"
+          [label]="'Required Inputs'"
+          [id]="'togglerequired'"
+          name="togglerequired"
+          [(ngModel)]="toggleRequired"
+          (ngModelChange)="countChanges()"
+          [isDisabled]="false"
+          [required]="toggleRequired"
+        >
+        </plx-input-checkbox>
+        <plx-input-checkbox
+          class="col-12"
+          [label]="'Readonly Inputs'"
+          [id]="'toggleReadonly'"
+          name="toggleReadonly"
+          [(ngModel)]="toggleReadonly"
+          (ngModelChange)="countChanges()"
+          [isDisabled]="false"
+          [required]="toggleRequired"
+        >
+        </plx-input-checkbox>
+        <plx-input-text
+          class="col-12"
+          email
+          [label]="'First Name'"
+          [readonly]="toggleReadonly"
+          [id]="'emailId'"
+          [(ngModel)]="textInput"
+          name="textInput"
+          (ngModelChange)="countChanges()"
+          [isDisabled]="false"
+          [placeholder]="'First Name'"
+          [tooltip]="'This is helper text that goes to the right of the input'"
+          [required]="toggleRequired"
+        >
+        </plx-input-text>
+        <plx-input-list
+          [readonly]="toggleReadonly"
+          [personIcon]="false"
+          class="col-12"
+          [(list)]="listInput"
+          [tooltip]="'This is helper text that goes to the right of the input'"
+          [label]="'Names'"
+          [isRequired]="toggleRequired"
+        >
+        </plx-input-list>
+        <plx-input-phone
+          class="col-12"
+          [readonly]="toggleReadonly"
+          [label]="'Phone Number'"
+          [(ngModel)]="phoneInput"
+          (ngModelChange)="countChanges()"
+          name="plxPhone"
+          [isDisabled]="false"
+          [tooltip]="'This is helper text that goes to the right of the input'"
+          [required]="toggleRequired"
+        >
+        </plx-input-phone>
+        <plx-input-phone
+          class="col-12"
+          [readonly]="toggleReadonly"
+          [label]="'Phone Number With Extension'"
+          [includeExtension]="true"
+          [(ngModel)]="phoneExtInput"
+          (ngModelChange)="countChanges()"
+          name="plxExtPhone"
+          [isDisabled]="false"
+          [tooltip]="'This is helper text that goes to the right of the input'"
+          [required]="toggleRequired"
+        >
+        </plx-input-phone>
+        <plx-input-select
+          class="col-12"
+          [readonly]="toggleReadonly"
+          [label]="'Select'"
+          [prettyCamelCase]="true"
+          [(ngModel)]="selectInputValue"
+          name="plxSelect"
+          (ngModelChange)="countChanges()"
+          [selectOptions]="selectInput"
+          [isDisabled]="false"
+          [placeholder]="'placeholderText'"
+          [tooltip]="'This is helper text that goes to the right of the input'"
+          [required]="toggleRequired"
+        >
+        </plx-input-select>
+        <plx-input-select-with-id
+          class="col-12"
+          [readonly]="toggleReadonly"
+          [displayProperty]="'nameWeird'"
+          [valueProperty]="'idWeird'"
+          name="plxSelectWithId"
+          [label]="'Select With ID'"
+          [(ngModel)]="selectWithIdValue"
+          (ngModelChange)="countChanges()"
+          [selectOptions]="selectWithIdInput"
+          [isDisabled]="false"
+          [placeholder]="'placeholderText'"
+          [prettyCamelCase]="true"
+          [tooltip]="'This is helper text that goes to the right of the input'"
+          [required]="toggleRequired"
+        ></plx-input-select-with-id>
+        <plx-input-textarea
+          class="col-12"
+          [readonly]="toggleReadonly"
+          [label]="'Text Area'"
+          [(ngModel)]="textAreaValue"
+          (ngModelChange)="countChanges()"
+          name="plxTextArea"
+          [tooltip]="'This is helper text that goes to the right of the input'"
+          [isDisabled]="false"
+          [placeholder]="'placeholderText'"
+          [rows]="3"
+          [required]="toggleRequired"
+        >
+        </plx-input-textarea>
+        <plx-input-checkbox
+          class="col-12"
+          [readonly]="toggleReadonly"
+          [label]="'Yes or No'"
+          [idStr]="'doyouhave2'"
+          name="plxCheckbox2"
+          [(ngModel)]="checkboxInput2"
+          (ngModelChange)="countChanges()"
+          [isDisabled]="false"
+          [tooltip]="'This is helper text that goes to the right of the input'"
+          [required]="toggleRequired"
+        >
+        </plx-input-checkbox>
+        <div class="col-12">
+          <ngx-dropzone [accept]="fileConfigurationService.fileApprovedMimeTypes" (change)="onFileSelect($event)">
+            <ngx-dropzone-label> Drag & drop here or <a class="text-primary">browse</a> </ngx-dropzone-label>
+            <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onFileRemove(f)">
+              <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            </ngx-dropzone-preview>
+          </ngx-dropzone>
+        </div>
+        <plx-input-yes-no-button
+          [tooltip]="'This is helper text that goes to the right of the input'"
+          class="col-12"
+          [readonly]="toggleReadonly"
+          [required]="toggleRequired"
+          [(ngModel)]="yesnoInput"
+          [label]="'Vacant Lot'"
+          [defaultValue]="'false'"
+          [name]="'vacantLot'"
+          [values]="multiToggleValues"
+        >
+        </plx-input-yes-no-button>
+        <plx-input-currency
+          class="col-12"
+          [readonly]="toggleReadonly"
+          name="currency"
+          [label]="'Currency'"
+          [(ngModel)]="currency"
+          name="plxCurrency"
+          [isDisabled]="false"
+          [tooltip]="'This is helper text that goes to the right of the input'"
+          [required]="toggleRequired"
+        >
+        </plx-input-currency>
+      </div>
+    </form>
+  </div>
+</div>

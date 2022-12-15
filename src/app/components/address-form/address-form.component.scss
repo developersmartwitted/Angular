@@ -1,0 +1,66 @@
+.gmaps-autocomplete {
+  & label::after {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  label {
+    transform: translate(calc(0.9375rem - 6px), 0.349351rem);
+    vertical-align: top;
+    height: 1rem;
+    &.has-value {
+      transform: translate(calc(1.0375rem - 6px), -0.9rem);
+    }
+  }
+}
+
+.hide-component {
+  display: none;
+}
+
+.input-width {
+  max-width: var(--input-max-width);
+  width: 100%;
+}
+
+.gmaps-autocomplete label {
+  z-index: 0;
+}
+
+::ng-deep .pac-container {
+  background-color: var(--background-color-1);
+  border: var(--border);
+  z-index: 1051;
+  .pac-item {
+    color: var(--text-color-primary);
+    border: var(--border);
+    padding: 0.4rem;
+    font-family: "Montserrat", sans-serif;
+    .pac-item-query {
+      color: var(--text-color-primary);
+    }
+  }
+  .pac-item-selected {
+    background-color: var(--background-color-2);
+    color: var(--text-color-primary);
+  }
+  &.pac-logo::after {
+    padding: 0.4rem;
+    height: 36px;
+  }
+}
+
+#address-form-google-search {
+  font-family: "Montserrat", sans-serif;
+}
+
+.p-float-label {
+  width: auto;
+}
+
+.p-inputwrapper-filled-label {
+  top: 0.15rem;
+  font-size: 0.75rem;
+  padding: 0 0.375rem;
+  border-color: var(--secondary);
+}

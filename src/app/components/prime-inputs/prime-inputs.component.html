@@ -1,0 +1,229 @@
+<div class="card">
+  <div class="card-body">
+    <h2>Prime Input Examples</h2>
+    <div>
+      <plx-input-checkbox
+        class="col-12"
+        [label]="'Required Inputs'"
+        [id]="'togglerequired'"
+        name="togglerequired"
+        [(ngModel)]="toggleRequired"
+        [isDisabled]="false"
+        [required]="toggleRequired"
+      >
+      </plx-input-checkbox>
+      <plx-input-checkbox
+        class="col-12"
+        [label]="'Readonly Inputs'"
+        [id]="'toggleReadonly'"
+        name="toggleReadonly"
+        [(ngModel)]="toggleReadonly"
+        [isDisabled]="false"
+        [required]="toggleRequired"
+      >
+      </plx-input-checkbox>
+      <div class="p-field p-col-12">
+        <span class="p-float-label">
+          <input
+            [required]="toggleRequired"
+            type="text"
+            id="inputtext"
+            pInputText
+            #inputText="ngModel"
+            [(ngModel)]="value1"
+          />
+          <label [class.required]="toggleRequired" [class.optional]="!toggleRequired" for="inputtext">InputText</label>
+        </span>
+        <div class="alert alert-danger" *ngIf="inputText.invalid && inputText.touched">
+          {{ errorService.errorMessage(inputText.errors, 'Name of Input') }}
+        </div>
+      </div>
+      <div class="p-field p-col-12">
+        <span class="p-float-label p-input-icon-right">
+          <i class="icon icon-plus h4"></i>
+          <p-chips [required]="toggleRequired" inputId="chips" #chips="ngModel" [(ngModel)]="value4"></p-chips>
+          <label [class.required]="toggleRequired" [class.optional]="!toggleRequired" for="chips">Chips</label>
+        </span>
+        <div class="alert alert-danger" *ngIf="chips.invalid && chips.touched">
+          {{ errorService.errorMessage(chips.errors, 'Name of Input') }}
+        </div>
+      </div>
+      <div class="p-field p-col-12">
+        <span class="p-float-label p-input-icon-right">
+          <i class="icon icon-date-picker h4"></i>
+          <p-calendar
+            #datepicker="ngModel"
+            [required]="toggleRequired"
+            inputId="calendar"
+            [(ngModel)]="value3"
+          ></p-calendar>
+          <label [class.required]="toggleRequired" [class.optional]="!toggleRequired" for="calendar">Calendar</label>
+        </span>
+        <div class="alert alert-danger" *ngIf="datepicker.invalid && datepicker.touched">
+          {{ errorService.errorMessage(datepicker.errors, 'Name of Input') }}
+        </div>
+      </div>
+      <div class="p-field p-col-12">
+        <span class="p-float-label">
+          <p-inputNumber
+            [required]="toggleRequired"
+            name="currency"
+            inputId="currency-us"
+            mode="currency"
+            currency="USD"
+            [(ngModel)]="value16"
+            locale="en-US"
+            #currency="ngModel"
+          >
+          </p-inputNumber>
+          <label [class.required]="toggleRequired" [class.optional]="!toggleRequired" for="inputmask">Currency</label>
+        </span>
+        <div class="alert alert-danger" *ngIf="currency.invalid && currency.touched">
+          {{ errorService.errorMessage(currency.errors, 'Name of Input') }}
+        </div>
+      </div>
+      <div class="p-field p-col-12">
+        <span class="p-float-label">
+          <p-inputMask
+            [required]="toggleRequired"
+            #phone="ngModel"
+            mask="(999) 999-9999"
+            [(ngModel)]="value5"
+          ></p-inputMask>
+          <label [class.required]="toggleRequired" [class.optional]="!toggleRequired" for="inputmask"
+            >Phone Number</label
+          >
+        </span>
+        <div class="alert alert-danger" *ngIf="phone.invalid && phone.touched">
+          {{ errorService.errorMessage(phone.errors, 'Name of Input') }}
+        </div>
+      </div>
+      <div class="p-field p-col-12">
+        <span class="p-float-label">
+          <p-inputMask
+            mask="(999) 999-9999? x99999"
+            [required]="toggleRequired"
+            [(ngModel)]="value6"
+            name="value6"
+            #phoneExt="ngModel"
+            required
+          ></p-inputMask>
+          <label for="inputmask" [class.required]="toggleRequired" [class.optional]="!toggleRequired"
+            >Phone Number with Extension</label
+          >
+        </span>
+        <div class="alert alert-danger" *ngIf="phoneExt.invalid && phoneExt.touched">
+          {{ errorService.errorMessage(phoneExt.errors, 'Name of Input') }}
+        </div>
+      </div>
+      <div class="p-field p-col-12">
+        <span class="p-float-label">
+          <p-dropdown
+            inputId="dropdown"
+            [required]="toggleRequired"
+            [autoDisplayFirst]="false"
+            [options]="citiesStringList"
+            [(ngModel)]="value7"
+            #dropdown="ngModel"
+          ></p-dropdown>
+          <label [class.required]="toggleRequired" [class.optional]="!toggleRequired" for="dropdown">Dropdown</label>
+        </span>
+        <div class="alert alert-danger" *ngIf="dropdown.invalid && dropdown.touched">
+          {{ errorService.errorMessage(dropdown.errors, 'Name of Input') }}
+        </div>
+      </div>
+      <div class="p-field p-col-12">
+        <span class="p-float-label">
+          <p-dropdown
+            inputId="dropdown"
+            [required]="toggleRequired"
+            [autoDisplayFirst]="false"
+            [options]="cities"
+            [(ngModel)]="value8"
+            #dropdownId="ngModel"
+            optionLabel="name"
+            optionValue="id"
+          ></p-dropdown>
+          <label [class.required]="toggleRequired" [class.optional]="!toggleRequired" for="dropdown"
+            >Dropdown with Id</label
+          >
+        </span>
+        <div class="alert alert-danger" *ngIf="dropdownId.invalid && dropdownId.touched">
+          {{ errorService.errorMessage(dropdownId.errors, 'Name of Input') }}
+        </div>
+      </div>
+      <div class="p-field p-col-12">
+        <span class="p-float-label">
+          <p-multiSelect
+            inputId="multiselect"
+            [required]="toggleRequired"
+            [options]="cities"
+            [(ngModel)]="value9"
+            #multiselect="ngModel"
+            optionLabel="name"
+            [filter]="false"
+          ></p-multiSelect>
+          <label [class.required]="toggleRequired" [class.optional]="!toggleRequired" for="multiselect"
+            >MultiSelect</label
+          >
+        </span>
+        <div class="alert alert-danger" *ngIf="multiselect.invalid && multiselect.touched">
+          {{ errorService.errorMessage(multiselect.errors, 'Name of Input') }}
+        </div>
+      </div>
+      <div class="p-field p-col-12">
+        <span class="p-float-label">
+          <textarea
+            inputId="textarea"
+            [required]="toggleRequired"
+            rows="3"
+            cols="30"
+            [(ngModel)]="value10"
+            #textarea="ngModel"
+            pInputTextarea
+          ></textarea>
+          <label [class.required]="toggleRequired" [class.optional]="!toggleRequired" for="textarea">Textarea</label>
+        </span>
+        <div class="alert alert-danger" *ngIf="textarea.invalid && textarea.touched">
+          {{ errorService.errorMessage(textarea.errors, 'Name of Input') }}
+        </div>
+      </div>
+      <div class="p-field p-col-12">
+        <div [class.required]="toggleRequired" [class.optional]="!toggleRequired" class="readonly-label">Checkbox</div>
+        <p-checkbox
+          [required]="toggleRequired"
+          inputId="groupname"
+          name="groupname"
+          value="val1"
+          [(ngModel)]="value12"
+        ></p-checkbox>
+        <label for="groupname">Do you want free shipping?</label>
+      </div>
+      <div class="p-field p-col-12">
+        <div [class.required]="toggleRequired" [class.optional]="!toggleRequired" class="readonly-label">
+          Radio Button
+        </div>
+        <div *ngFor="let category of citiesStringList" class="p-field-checkbox">
+          <p-radioButton
+            [name]="category"
+            [inputId]="category"
+            [value]="category"
+            [(ngModel)]="value13"
+            [disabled]="false"
+            [required]="toggleRequired"
+          ></p-radioButton>
+          <label [for]="category">{{ category }}</label>
+        </div>
+      </div>
+      <div class="p-field p-col-12">
+        <div class="d-flex align-items-center">
+          <p-inputSwitch #toggle="ngModel" inputId="category" [(ngModel)]="value14"></p-inputSwitch>
+          <label [class.required]="toggleRequired" [class.optional]="!toggleRequired" for="category">On or Off?</label>
+        </div>
+        <div class="alert alert-danger" *ngIf="toggle.invalid && toggle.touched">
+          {{ errorService.errorMessage(toggle.errors, 'Name of Input') }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

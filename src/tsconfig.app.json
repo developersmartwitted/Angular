@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "types": []
+  },
+  "include": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "module": "es2020",
+  "exclude": ["test.ts", "**/*.spec.ts", "dist"],
+  "angularCompilerOptions": {
+    "enableIvy": false
+  }
+}

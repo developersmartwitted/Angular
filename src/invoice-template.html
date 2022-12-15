@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>PropLogix Invoice</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODAuNDEgMTUxLjg5Ij48ZyBkYXRhLW5hbWU9IkxheWVyIDIiPjxwYXRoIGQ9Ik01Ni42OSAxMTUuNDd2Mi4xOWE0LjIxIDQuMjEgMCAwMS00LjIxIDQuMkgyOS4xOWE0LjE5IDQuMTkgMCAwMS00LjE5LTQuMTh2LTcuODVjMC02LjQzLjA2LTEyLjg2IDAtMTkuMjlINC4yM0E0LjIgNC4yIDAgMDEwIDg2LjM1YTQuMjUgNC4yNSAwIDAxMS4yMy0zTDgwLjYxIDRhMTMuNjMgMTMuNjMgMCAwMTE5LjI3IDBoLjA1bDc5LjIzIDc5LjIyYTQuMjEgNC4yMSAwIDAxLTIuOTQgNy4yMWgtMjAuNzljLS4yMiAxNS4wNi0uMTUgMjQuNzktLjA4IDM2LjMzIDAgNiAuMDkgMTIuNS4xIDIwLjQ5di4zOGE0LjIgNC4yIDAgMDEtNC4yIDQuMmgtODRBNC4xOSA0LjE5IDAgMDE2MyAxNDcuN3YtNTNhMjUuMTYgMjUuMTYgMCAwMS4xOC0zIDI1Ljc1IDI1Ljc1IDAgMDEuNTEtMyAyNy4xNSAyNy4xNSAwIDAxNDUuNTItMTMuNWwuMjUuMjRhMjguNTUgMjguNTUgMCAwMTIuMyAyLjYyIDI4LjEyIDI4LjEyIDAgMDExLjk1IDIuOTQgMjkuMjcgMjkuMjcgMCAwMTEuODMgMy43MyAyOCAyOCAwIDAxMS4yNCA0IDI1Ljc1IDI1Ljc1IDAgMDEuNTEgMyAyNi43NSAyNi43NSAwIDAxLTEuOSAxMy40MSAyNy41IDI3LjUgMCAwMS0xNC43NiAxNC43NiAyNi44MyAyNi44MyAwIDAxLTEwLjM4IDIuMDhoLTYuMTFhNC4yIDQuMiAwIDAxLTQuMi00LjJ2LTIuMTlhNC4yMSA0LjIxIDAgMDE0LjItNC4yMWg2LjExYTE2Ljc0IDE2Ljc0IDAgMDAxNi42LTE2LjcxIDE4LjE4IDE4LjE4IDAgMDAtLjItMi42NSAxNy42MiAxNy42MiAwIDAwLS42NC0yLjU1IDE2LjkyIDE2LjkyIDAgMDAtMS42Mi0zLjUxIDE3LjQ1IDE3LjQ1IDAgMDAtMi4yMi0yLjg1bC0uMjktLjI4YTE2LjU2IDE2LjU2IDAgMDAtMjMuMzMgMGwtLjA5LjA3YTE2Ljc0IDE2Ljc0IDAgMDAtMy45NSA2LjI2bC0uMDguM2ExNS4zNSAxNS4zNSAwIDAwLS42NCAyLjU0IDE1Ljc3IDE1Ljc3IDAgMDAtLjIgMi42NXY0Ni45aDcxLjQ4Vjg0LjMxYTQuMjEgNC4yMSAwIDAxNC4yLTQuMjFoMTJsLTY2LjctNjYuN2MtMi4yNC0yLjI0LTYuMTItMi42Mi04LjQtLjMzTDIxLjQ0IDc3Ljg0Yy0uNzYuNzctMS41MiAxLjUzLTIuMjkgMi4yOWgxMmE0LjIyIDQuMjIgMCAwMTQuMjEgNC4yMXYyNi45MmgxNy4xMWE0LjIzIDQuMjMgMCAwMTQuMjIgNC4yMXoiIGZpbGw9IiMzOWIyNzYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZGF0YS1uYW1lPSJMYXllciAxIi8+PC9nPjwvc3ZnPg=="
+    />
+    <style>
+      html {
+        font-size: 1rem;
+        margin: 1rem;
+        width: 800px;
+        font-family: 'Montserrat', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+          Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+          'Noto Color Emoji';
+      }
+      .bold {
+        font-weight: 700;
+      }
+      .color-gray {
+        color: darkgray;
+      }
+      .line {
+        border-top-color: darkgray;
+        border-top-style: solid;
+        border-top-width: thin;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+      .line-2 {
+        border-top-width: unset;
+      }
+      .company-logo {
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzAiIGhlaWdodD0iMzcuNTYyIj48ZGVmcz48Y2xpcFBhdGggaWQ9InByZWZpeF9fYSI+PHBhdGggZGF0YS1uYW1lPSJDbGlwIDIiIGQ9Ik0wIDBoNDQuNzM0djM3LjU2MkgweiIgZmlsbD0ibm9uZSIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSJwcmVmaXhfX2IiPjxwYXRoIGRhdGEtbmFtZT0iQ2xpcCA1IiBkPSJNMCAwaDExOC44NTV2MjEuODIzSDB6IiBmaWxsPSJub25lIi8+PC9jbGlwUGF0aD48L2RlZnM+PGcgZGF0YS1uYW1lPSJHcm91cCAzIj48cGF0aCBkYXRhLW5hbWU9IkNsaXAgMiIgZD0iTTAgMGg0NC43MzR2MzcuNTYySDB6IiBmaWxsPSJub25lIi8+PGcgZGF0YS1uYW1lPSJHcm91cCAzIiBjbGlwLXBhdGg9InVybCgjcHJlZml4X19hKSI+PHBhdGggZGF0YS1uYW1lPSJGaWxsIDEiIGQ9Ik0xNC4wNSAyOC41NDh2LjU0MWExLjA0MSAxLjA0MSAwIDAxLTEuMDQzIDEuMDRINy4yMzFhMS4wMzcgMS4wMzcgMCAwMS0xLjAzOC0xLjAzNWMwLS42NTIgMC0xLjMuMDA4LTEuOTM5LjAwOC0xLjU5LjAxNi0zLjE4IDAtNC43NzJIMS4wNDJBMS4wNCAxLjA0IDAgMDEuMzA1IDIwLjZMMTkuOTgyLjk4MUEzLjM4OCAzLjM4OCAwIDAxMjQuNzc1IDFsMTkuNjQ2IDE5LjZhMS4wMzkgMS4wMzkgMCAwMS0uNzMgMS43ODFoLTUuMTU2Yy0uMDU0IDMuNzI0LS4wMzcgNi4xMzItLjAxOCA4Ljk4NS4wMSAxLjQ4NC4wMjEgMy4wODkuMDI0IDUuMDY2di4wOTNhMS4wNDEgMS4wNDEgMCAwMS0xLjA0MSAxLjAzN0gxNi42NTlhMS4wNDEgMS4wNDEgMCAwMS0xLjA0Mi0xLjAzOVYyMy40YTYuNjgyIDYuNjgyIDAgMDEuMDQ0LS43NDkgNi41NzcgNi41NzcgMCAwMS40MzUtMS43MjEgNi43NDYgNi43NDYgMCAwMS40NTItLjkzIDYuODMgNi44MyAwIDAxLjQ4My0uNzEyIDYuNzM0IDYuNzM0IDAgMDExMC4wNC0uNzA4IDEuMSAxLjEgMCAwMS4wNjIuMDU3QTYuOTM5IDYuOTM5IDAgMDEyOC4xODYgMjBhNi43MyA2LjczIDAgMDEuNDUzLjkyNCA2LjY1NiA2LjY1NiAwIDAxLjMwOC45NzggNi44MjQgNi44MjQgMCAwMS4xMjcuNzQzIDYuNTk1IDYuNTk1IDAgMDEtLjQ3MiAzLjMxNyA2Ljc3MSA2Ljc3MSAwIDAxLTYuMjM1IDQuMTY0aC0xLjUxNGExLjA0MSAxLjA0MSAwIDAxLTEuMDQyLTEuMDR2LS41NDFhMS4wNDEgMS4wNDEgMCAwMTEuMDQyLTEuMDRoMS41MTRhNC4xMjcgNC4xMjcgMCAwMDQuMDc0LTQuNzY1IDQuMjQ5IDQuMjQ5IDAgMDAtLjU2LTEuNSA0LjExNyA0LjExNyAwIDAwLS41NTItLjcwNmwtLjA3MS0uMDY4YTQuMTU0IDQuMTU0IDAgMDAtMS4zMzItLjg3OSA0LjExNiA0LjExNiAwIDAwLTQuNDU0Ljg4MmwtLjAyLjAyYTQuMTUzIDQuMTUzIDAgMDAtLjk4IDEuNTQ2bC0uMDIxLjA3NGEzLjgyMyAzLjgyMyAwIDAwLS4yMDcgMS4yODZ2MTEuNkgzNS45N1YyMC44NDlhMS4wNDEgMS4wNDEgMCAwMTEuMDQyLTEuMDM5aDIuOTc4TDIzLjQ1IDMuMzE1YTEuNTA1IDEuNTA1IDAgMDAtMi4wODQtLjA4Mkw1LjMxMSAxOS4yNDRsLS41NjguNTY2aDIuOTc4YTEuMDQxIDEuMDQxIDAgMDExLjA0MiAxLjAzOXY2LjY1OWg0LjI0NGExLjA0MSAxLjA0MSAwIDAxMS4wNDMgMS4wNCIgZmlsbD0iIzQ4Yjc4MCIvPjwvZz48L2c+PGcgZGF0YS1uYW1lPSJHcm91cCA2Ij48cGF0aCBkYXRhLW5hbWU9IkNsaXAgNSIgZD0iTTUxLjE0NSAxNS43MzhIMTcwdjIxLjgyM0g1MS4xNDV6IiBmaWxsPSJub25lIi8+PGcgZGF0YS1uYW1lPSJHcm91cCA2IiBjbGlwLXBhdGg9InVybCgjcHJlZml4X19iKSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTEuMTQ1IDE1LjczOCkiPjxwYXRoIGRhdGEtbmFtZT0iRmlsbCA0IiBkPSJNOTAuNCAyMS44MjRhMTEuNzQ5IDExLjc0OSAwIDAxLTUuNDg0LTEuM2wxLjItMi42MzdhOC4xMjMgOC4xMjMgMCAwMDQuMTg0IDEuMTM3IDMuNzE5IDMuNzE5IDAgMDAyLjY3Mi0uODU2IDMuMzc4IDMuMzc4IDAgMDAuODY4LTIuNTIydi0uNmE0LjgyMSA0LjgyMSAwIDAxLTQuMDQgMi4wMTIgNS40NjEgNS40NjEgMCAwMS0zLjgzOC0xLjUxMyA1Ljc4NiA1Ljc4NiAwIDAxLTEuNjY5LTQuMjcydi0uMDQ2YTUuNzcgNS43NyAwIDAxMS42ODYtNC4yOCA1LjQ2NiA1LjQ2NiAwIDAxMy44MjEtMS41IDUuMDMzIDUuMDMzIDAgMDE0IDEuODUxVjUuNjc0aDMuNTE3djkuNmMwIDIuMzE5LS41NjcgMy45NjMtMS43MzIgNS4wMjYtMS4xMjUgMS4wMjYtMi44MjEgMS41MjQtNS4xODUgMS41MjR6bS40MTYtMTMuNDY1YTIuODQ0IDIuODQ0IDAgMDAtMy4wMDggMi44Njl2LjA0NmEzLjAyMyAzLjAyMyAwIDAwNi4wMzggMHYtLjA0NmEyLjg1NiAyLjg1NiAwIDAwLTMuMDMzLTIuODd6TTQzLjI4OSAyMS43NzdoLTMuNTE2VjUuNjc0aDMuNTE3djEuNzgxYTQuNTYyIDQuNTYyIDAgMDEzLjg2NC0yLjAxMyA1LjM5MiA1LjM5MiAwIDAxMy45MDYgMS42NTIgNi42NjYgNi42NjYgMCAwMTEuNzQgNC43NTd2LjA0OWE2LjY4OCA2LjY4OCAwIDAxLTEuNzIxIDQuNzU4IDUuMzkzIDUuMzkzIDAgMDEtMy45MjUgMS42NTIgNC43NCA0Ljc0IDAgMDEtMy44NjQtMS44NTJ2NS4zMjF6bTIuOTYyLTEzLjM1YTMuMTY1IDMuMTY1IDAgMDAtMy4wMDggMy40MjR2LjA0OWEzLjA0MyAzLjA0MyAwIDEwNi4wMzggMHYtLjA0N2EzLjE3NCAzLjE3NCAwIDAwLTMuMDMtMy40MjZ6bTI5LjMxNSA5LjkyNmE2LjggNi44IDAgMDEtNC43ODQtMS44NjggNi4yNjkgNi4yNjkgMCAwMS0xLjktNC41NFYxMS45QTYuMzE1IDYuMzE1IDAgMDE3MC44IDcuMzM0YTcuMDY2IDcuMDY2IDAgMDE5LjYtLjAyMyA2LjI2OSA2LjI2OSAwIDAxMS45IDQuNTR2LjA0OWE2LjMxNCA2LjMxNCAwIDAxLTEuOTE3IDQuNTYzIDYuODM5IDYuODM5IDAgMDEtNC44MTcgMS44OXptMC05Ljg3OWEzLjE1NyAzLjE1NyAwIDAwLTMuMjE2IDMuMzc4di4wNDhhMy4zMSAzLjMxIDAgMDAzLjI2MiAzLjQyNCAzLjE1NyAzLjE1NyAwIDAwMy4yMTYtMy4zNzhWMTEuOWEzLjMxMSAzLjMxMSAwIDAwLTMuMjYyLTMuNDI3em0tNDUuMDcyIDkuODc5YTYuOCA2LjggMCAwMS00Ljc4My0xLjg2OCA2LjI2OSA2LjI2OSAwIDAxLTEuOS00LjU0VjExLjlhNi4zMTUgNi4zMTUgMCAwMTEuOTE3LTQuNTY0IDcuMDY3IDcuMDY3IDAgMDE5LjYtLjAyMyA2LjI2OSA2LjI2OSAwIDAxMS45IDQuNTR2LjA0N2E2LjMxNCA2LjMxNCAwIDAxLTEuOTE3IDQuNTYzIDYuODQgNi44NCAwIDAxLTQuODE3IDEuODl6bTAtOS44NzlhMy4xNTcgMy4xNTcgMCAwMC0zLjIxNiAzLjM3OHYuMDQ4YTMuMzEgMy4zMSAwIDAwMy4yNjIgMy40MjQgMy4xNTcgMy4xNTcgMCAwMDMuMjE2LTMuMzc4VjExLjlhMy4zMTEgMy4zMTEgMCAwMC0zLjI2Mi0zLjQyN3ptNzkuNTkxIDkuNmgtMy42NzlsNC4zNS02LjI5NC00LjE4OC02LjEwOWgzLjc3MWwyLjMxMyAzLjYxIDIuMzM3LTMuNjFoMy42NzlsLTQuMTg4IDYuMDQgNC4zNzIgNi4zNjFoLTMuNzcxbC0yLjUtMy44NjQtMi41IDMuODY0em0tNS45NDYgMGgtMy41MTd2LTEyLjRoMy41MTd2MTIuNHptLTM2Ljc0MSAwSDU1Ljc2VjEuODhoMy41NjR2MTIuOTU2SDY3LjR2My4yMzh6bS00OC44IDBoLTMuNTEzdi0xMi40SDE4LjZ2Mi41Yy43ODItMS44NjYgMS45NjMtMi43MzUgMy43MTctMi43MzUuMDc4IDAgLjE1OSAwIC4yMzkuMDA1djMuNjc3aC0uMTg1Yy0yLjQzMiAwLTMuNzcyIDEuNTUzLTMuNzcyIDQuMzczdjQuNTgxem0tMTUuMDM5IDBIMFYxLjg4aDYuNjE3YzMuNzY3IDAgNi4yIDIuMiA2LjIgNS42di4wNDZhNS4yNTEgNS4yNTEgMCAwMS0xLjkxMiA0LjI1MSA3LjI4MyA3LjI4MyAwIDAxLTQuNjM2IDEuNDRIMy41NjN2NC44NTh6bTAtMTIuOTh2NC45NTFoMi44MjdjMS42ODggMCAyLjgyMy0uOTg2IDIuODIzLTIuNDUzdi0uMDQ0QzkuMjA4IDUuOTkgOC4xNTQgNS4xIDYuMzE2IDUuMXptOTguODE4LS45YTIuMSAyLjEgMCAxMTIuMS0yLjEgMi4xIDIuMSAwIDAxLTIuMDk2IDIuMDk4eiIvPjwvZz48L2c+PC9zdmc+');
+        background-repeat: no-repeat;
+        background-position: center left;
+        height: 5rem;
+        background-size: 15rem;
+      }
+      .align-left {
+        text-align: left;
+      }
+      .align-right {
+        text-align: right;
+      }
+      .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding: 10px;
+      }
+      .grid-container-two-col {
+        display: grid;
+        grid-template-columns: auto 20rem;
+      }
+      .grid-container-one-col {
+        display: grid;
+        grid-template-columns: auto;
+      }
+      .items {
+        display: grid;
+        grid-template-columns: auto 8rem 8rem 4rem;
+        row-gap: 1rem;
+      }
+      .header {
+        display: grid;
+        grid-template-columns: auto 16rem;
+        align-items: center;
+      }
+      .card {
+        background-color: #f2f6f7;
+        border-radius: 10px;
+        padding: 1rem;
+      }
+      .invoice-header {
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 150%;
+      }
+      .invoice-span {
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 150%;
+      }
+      .invoice-value {
+        font-size: 1rem;
+        line-height: 150%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div id="header-left" class="align-left">
+        <div class="company-logo"></div>
+        <div class="address">
+        <span>5901 N Honore Ave, Ste 200</span> <br />
+        <span>Sarasota, FL 34243</span> <br />
+        <span>Ph: (941) 444-7142</span>
+        <span>Fax: (941) 214-1132</span>
+        </div>
+      </div>
+
+      <div id="header-right" class="align-left">
+        <div id="invoice">
+          <span class="invoice-header">PLX #: </span>
+          <span class="invoice-header">21-1460366</span>
+        </div>
+        <div id="dueDate">
+          <span class="invoice-span">Due Date: </span>
+          <span class="invoice-value">12/7/2021</span>
+        </div>
+        <div id="paymentStatus">
+          <span class="invoice-span">Payment Status: </span>
+          <span class="invoice-value">Open</span>
+        </div>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="grid-container-two-col">
+      <div id="customer">
+        <span class="invoice-span">Boston National</span> <br />
+        <span class="invoice-span color-gray">Attn: Orders Boston National</span> <br />
+        <span class="invoice-value">File #: GA21128596</span> <br />
+        <span>400 Rouser Road Suite 602 Coraopolis</span> <br />
+        <span>Pennsylvania 15108</span> <br />
+      </div>
+      <div id="researchedProperty" class="card">
+        <span>Researched Property</span>
+        <div class="line line-2"></div>
+        <span class="invoice-span">20 Camden Place</span> <br />
+        <span>Covington, Georgia 30014</span> <br /><br />
+        <span class="bold">Owner Name:</span> <br />
+        <span>Clayanne Wolfe</span> <br /><br />
+        <span class="bold">Folio / PID #:</span> <br />
+        <span>0082E00000033000</span> <br />
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="grid-container-one-col">
+      <div>Invoice Date: 12/28/2021</div>
+    </div>
+    <div class="line line-2"></div>
+    <div id="line-items" class="items">
+      <div>Tax Certificate</div>
+      <div>&nbsp;</div>
+      <div class="align-right">
+        <span>$55.00</span>
+      </div>
+      <div>&nbsp;</div>
+    </div>
+    <div class="line line-2"></div>
+    <div id="total-due" class="items">
+      <div>&nbsp;</div>
+      <div class="bold">Total Due:</div>
+      <div class="align-right">
+        <span>$55.00</span>
+      </div>
+      <div>&nbsp;</div>
+
+      <div>&nbsp;</div>
+      <div class="bold">Due Date:</div>
+      <div class="align-right">
+        <span>12/7/2021</span>
+      </div>
+      <div>&nbsp;</div>
+    </div>
+    <div class="grid-container-one-col">
+      <div class="footer">
+        Please make checks payable to:<br />
+        PropLogix, LLC<br />
+        5901 N Honore Ave, Ste 200<br />
+        Sarasota, FL 34243
+      </div>
+    </div>
+  </body>
+</html>

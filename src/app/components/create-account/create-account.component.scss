@@ -1,0 +1,40 @@
+
+#lock-container-1 {
+  height: auto;
+  overflow: auto;
+  .progress-circle.bg-primary {
+    background-color: var(--primary);
+  }
+  .lock-form {
+    padding: 40px;
+    position: relative;
+    z-index: 2;
+    max-width: px(835);
+    width: 100%;
+  }
+  .progress-circle {
+    width: px(15);
+    background-color: var(--gray-1);
+    height: px(15);
+  }
+  .lock-overlay {
+    background-image: var(--auth0-background);
+    background-repeat: repeat;
+  }
+  .lock-widget {
+    background-color: var(--background-color-1);
+    border-radius: 15px;
+  }
+  .terms {
+    .link-animation {
+      font-size: px(14);
+    }
+    .terms-text {
+      position: absolute;
+      top: -21px;
+      left: 45px;
+      width: 444px;
+      cursor: pointer;
+    }
+  }
+}
